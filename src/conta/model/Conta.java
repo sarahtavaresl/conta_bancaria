@@ -1,0 +1,111 @@
+package conta.model;
+
+public class Conta {
+
+	private int numero;
+	private int agencia;
+	private int tipo;
+	private String titular;
+	private float saldo; // criei um construtor para a classe, da linha 12 ao 20
+
+	public Conta(int numero, int agencia, int tipo, String titular, float saldo) {
+
+		// this é usado para distinguir o parâmetro do atributo
+		this.numero = numero;
+		this.agencia = agencia;
+		this.tipo = tipo;
+		this.titular = titular;
+		this.saldo = saldo;
+
+	}
+
+	// criei get e set
+	public int getNumero() { // tipo inteiro espera um tipo inteiro
+		return numero;
+	}
+
+	public void setNumero(int numero) {// tipo void não espera retorno
+		this.numero = numero;
+	}
+
+	public int getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(int agencia) {
+		this.agencia = agencia;
+	}
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getTitular() {
+		return titular;
+	}
+
+	public void setTitular(String titular) {
+		this.titular = titular;
+	}
+
+	public float getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
+	}
+
+	public boolean sacar(float valor) {
+
+		if (this.getSaldo() < valor) {
+			System.out.println("Saldo insuficiente1!");
+			return false;
+
+		} else {
+			this.setSaldo(this.getSaldo() - valor);
+
+			return true;
+		}
+
+	}
+
+	public void depositar(float valor) {
+
+		this.setSaldo(this.getSaldo() + valor);
+
+	}
+
+	public void visualizar() {
+
+		String tipo = "";
+
+		switch (this.tipo) {
+		case 1:
+			tipo = "conta corrente";
+
+			break;
+
+		case 2:
+			tipo = "Conta poupança";
+
+			break;
+		}
+		
+		System.out.println("\n\n***********************************************************");
+		System.out.println("Dados da Conta:");
+		System.out.println("***********************************************************");
+		System.out.println(" Número da conta: "+this.numero);
+		System.out.println("Agência: "+ this.agencia);
+		System.out.println("Tipo de conta: " + this.tipo);
+		System.out.println("Titular: " + this.titular);
+		System.out.println("Saldo: " + this.saldo);
+		
+
+		
+	}
+}
