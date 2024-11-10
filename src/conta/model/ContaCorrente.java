@@ -1,0 +1,39 @@
+package conta.model;
+
+public class ContaCorrente extends Conta {
+	private float limite;
+
+	public ContaCorrente(int numero, int agencia, int tipo, String titular, float saldo, float limite) {
+		super(numero, agencia, tipo, titular, saldo);// o Método Construtor recebeu todos os dados da Classe Conta
+														// através do Método super
+		this.limite = limite;
+
+	}
+
+	public float getLimite() {
+		return limite;
+	}
+
+	public void setLimite(float limite) {
+		this.limite = limite;
+	}
+
+	@Override
+	public boolean sacar(float valor) {
+
+		if (this.getSaldo() + this.getLimite() < valor) {
+			System.out.println("\n Saldo insuficiente! ");
+			return true;
+
+		}
+		this.setSaldo(this.getSaldo() - valor);
+		return true;
+
+	}
+	public void visualizar() {
+		super.visualizar();
+		System.out.println("Limites de credito" + this.limite);
+		
+
+	}
+}
