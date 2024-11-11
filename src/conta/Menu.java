@@ -1,18 +1,16 @@
 package conta;
 
-import conta.model.ContaCorrente;
-import conta.model.ContaPoupanca;
-import conta.model.Conta;
-
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import conta.model.Conta;
+import conta.model.ContaCorrente;
+import conta.model.ContaPoupanca;
+import conta.util.Cores;
 
 public class Menu {
 
 	public static void main(String[] args) {
-
-		
 
 		ContaCorrente cc1 = new ContaCorrente(2, 123, 1, "Marina", 1500.0f, 1000.0f);
 		cc1.visualizar();
@@ -53,6 +51,14 @@ public class Menu {
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
 			System.out.println("                                                     ");
+
+			try {
+				opcao = leia.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("\n Digite valores inteiros!");
+				leia.nextLine();
+				opcao = 0;
+			}
 
 			opcao = leia.nextInt();
 
@@ -112,4 +118,21 @@ public class Menu {
 		System.out.println("*********************************************************");
 	}
 
-}
+	public static void Keypress() {
+		
+		try {
+			
+			System.out.println(Cores.TEXT_RESET + "\n\n Pressione enter para continuar...");
+			System.in.read();
+			
+		} catch(IOException e) {
+			
+			System.out.println("Você pressionou uma tecla diferente de enter!");
+			
+		}
+			
+			
+		}
+	}
+	
+
